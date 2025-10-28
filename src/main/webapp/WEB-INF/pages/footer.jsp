@@ -8,6 +8,5 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <!-- FOOTER -->
 <footer class="container text-center">
-    <p>&copy; 2025 Cojanu Maria-Luiza &middot;
-</p>
+    <p>&copy; 2025 Cojanu Maria-Luiza </p>
 </footer>
