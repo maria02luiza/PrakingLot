@@ -35,5 +35,18 @@
             </div>
 
         </div>
+        <div class="row">
+            <div class ="col">
+                Car 3
+            </div>
+            <div class ="col">
+                Spot 3
+            </div>
+            <div class ="col">
+                User 3
+            </div>
+
+        </div>
     </div>
+    <h5>Free parking spots: ${numberOfFreeParkingSpots}</h5>
 </t:pageTamplate>
