@@ -2,9 +2,6 @@ package com.parking.prakinglot.entities;
 
 import jakarta.persistence.*;
 
-import java.util.ArrayList;
-import java.util.List;
-
 @Entity
 @Table(name = "cars")
 public class Cars {
@@ -12,9 +9,6 @@ public class Cars {
     @GeneratedValue(strategy = GenerationType.SEQUENCE)
     @Column(name = "id", nullable = false)
     private Long id;
-
-    @OneToMany(mappedBy = "owner", orphanRemoval = true)
-    private List<Cars> cars = new ArrayList<>();
 
     @Column(name = "parking_spot")
     private String parkingSpot;
@@ -24,23 +18,16 @@ public class Cars {
 
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
-    private Cars owner;
+    private User owner;
 
-    public List<Cars> getCars() {
-        return cars;
-    }
-
-    public void setCars(List<Cars> cars) {
-        this.cars = cars;
-    }
-
-    public Cars getOwner() {
+    public User getOwner() {
         return owner;
     }
 
-    public void setOwner(Cars owner) {
+    public void setOwner(User owner) {
         this.owner = owner;
     }
+
 
     public String getParkingSpot() {
         return parkingSpot;
