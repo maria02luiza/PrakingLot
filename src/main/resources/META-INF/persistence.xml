@@ -7,7 +7,7 @@
     <persistence-unit name="default" transaction-type="JTA">
         <jta-data-source>jdbc/ParkingLotResource</jta-data-source>
         <class>com.parking.prakinglot.entities.User</class>
-        <class>com.parking.prakinglot.entities.Cars</class>
+        <class>com.parking.prakinglot.entities.Car</class>
 
         <properties>
             <property name="jakarta.persistence.schema-generation.database.action" value="create-or-extend-tables" />
