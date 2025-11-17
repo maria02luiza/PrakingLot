@@ -7,6 +7,7 @@ import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.persistence.TypedQuery;
+import jdk.internal.org.jline.utils.Log;
 
 import java.util.ArrayList;
 import java.util.List;
