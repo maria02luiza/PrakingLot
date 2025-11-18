@@ -11,6 +11,8 @@
 
 <t:pageTamplate pageTitle="Cars">
     <h1>Cars</h1>
+    <button class=" btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddCar">Add Car</button>
+
     <div class="container text -center">
        <c:forEach var="car" items="${cars}">
            <div class="row">
