@@ -2,6 +2,7 @@ package com.parking.prakinglot.ejb;
 
 import com.parking.prakinglot.entities.Car;
 import com.parking.prakinglot.common.CarDto;
+import com.parking.prakinglot.entities.User;
 import jakarta.ejb.EJBException;
 import jakarta.ejb.Stateless;
 import jakarta.persistence.EntityManager;
@@ -27,6 +28,20 @@ public class CarsBean {
         } catch (Exception ex) {
             throw new EJBException(ex);
         }
+    }
+    public void createCar(String licensePlate, String parkingSpot, Long userId) {
+
+        LOG.info("createCar");
+
+        Car car = new Car();
+        car.setLicensePlate(licensePlate);
+        car.setParkingSpot(parkingSpot);
+
+        User user = entityManager.find(User.class, userId);
+        user.getCars().add(car);
+        car.setOwner(user);
+
+        entityManager.persist(car);
     }
     private List<CarDto> copyCarsToDto(List<Car> cars) {
         List<CarDto> carDtos = new ArrayList<>();
