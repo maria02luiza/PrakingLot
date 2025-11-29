@@ -11,11 +11,15 @@
 
 <t:pageTamplate pageTitle="Cars">
     <h1>Cars</h1>
+    <form method="post" action="${pageContext.request.contextPath}/Cars">
     <a class=" btn btn-primary btn-lg" href="${pageContext.request.contextPath}/AddCar">Add Car</a>
-
+   <button class="btn btn-danger" type="submit">Delete Cars</button>
     <div class="container text -center">
         <c:forEach var="car" items="${cars}">
             <div class="row">
+                <div class="col">
+                    <input type="checkbox" name="car_ids" value="${car.id}" />
+            </div>
                 <div class="col">
                         ${car.licensePlate}
                 </div>
@@ -25,8 +29,13 @@
                 <div class="col">
                         ${car.ownerName}
                 </div>
+                <div class="col">
+                        <%-- Butonul Edit pentru fiecare mașină --%>
+                    <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/EditCar?id=${car.id}">Edit Car</a>
+                </div>
             </div>
         </c:forEach>
     </div>
+    </form>
     <h5>Free parking spots: ${numberOfFreeParkingSpots}</h5>
 </t:pageTamplate>
