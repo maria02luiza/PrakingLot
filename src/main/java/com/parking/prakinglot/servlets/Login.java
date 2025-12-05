@@ -13,17 +13,19 @@ import java.rmi.server.ServerCloneException;
 import java.util.List;
 
 @WebServlet(name="Login", value="/Login")
-
 public class Login extends HttpServlet {
     @Override
-    protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException, ServletException {
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
         request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
     }
 
     @Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServerException, IOException, ServletException {
-        request.setAttribute("message", "Username or password incorrect");
-        request.getRequestDispatcher("/WEB-INF/pages/login.jsp").forward(request, response);
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        // NU trebuie să faci nimic aici când folosești FORM authentication
+        // GlassFish se ocupă de tot prin j_security_check
+        doGet(request, response);
     }
 }
 
