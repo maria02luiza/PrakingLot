@@ -34,10 +34,15 @@
                     <div class="col">
                             ${car.ownerName}
                     </div>
+                    <div class="col">
+                        <img src="${pageContext.request.contextPath}/CarPhotos?id=${car.id}" width="48"/>
+                    </div>
                     <c:if test="${pageContext.request.isUserInRole('WRITE_CARS')}">
                         <div class="col">
-                                <%-- Butonul Edit pentru fiecare mașină --%>
                             <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/EditCar?id=${car.id}">Edit Car</a>
+                        </div>
+                        <div class="col">
+                            <a class="btn btn-secondary btn-sm" href="${pageContext.request.contextPath}/AddCarPhoto?id=${car.id}" role="button">Add photo</a>
                         </div>
                     </c:if>
                 </div>
