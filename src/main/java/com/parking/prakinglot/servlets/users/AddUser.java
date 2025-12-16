@@ -1,4 +1,4 @@
-package com.parking.prakinglot.servlets;
+package com.parking.prakinglot.servlets.users;
 
 import com.parking.prakinglot.ejb.UserBean;
 import jakarta.ejb.EJB;
@@ -22,19 +22,19 @@ public class AddUser extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException
     {request.setAttribute("userGroups", new String[] {"READ_CARS", "WRITE_CARS", "READ_USERS", "WRITE_USERS"});
-        request.getRequestDispatcher("/WEB-INF/pages/addUser.jsp").forward(request, response);
-}
-@Override
-    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-    String username = request.getParameter("username");
-    String email = request.getParameter("email");
-    String password = request.getParameter("password");
-    String[] userGroups = request.getParameterValues("user_groups");
-    if (userGroups == null) {
-        userGroups = new String[0];
+        request.getRequestDispatcher("/WEB-INF/pages/users/addUser.jsp").forward(request, response);
     }
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
+        String username = request.getParameter("username");
+        String email = request.getParameter("email");
+        String password = request.getParameter("password");
+        String[] userGroups = request.getParameterValues("user_groups");
+        if (userGroups == null) {
+            userGroups = new String[0];
+        }
 
-    userBean.createUser(username, email, password, Arrays.asList(userGroups));
-    response.sendRedirect(request.getContextPath() + "/Users");
-}
+        userBean.createUser(username, email, password, Arrays.asList(userGroups));
+        response.sendRedirect(request.getContextPath() + "/Users");
+    }
 }

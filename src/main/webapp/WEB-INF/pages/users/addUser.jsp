@@ -1,10 +1,3 @@
-<%--
-  Created by IntelliJ IDEA.
-  User: Maria
-  Date: 05.12.2025
-  Time: 10:30
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <%@ taglib prefix="t" tagdir="/WEB-INF/tags" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
@@ -46,31 +39,26 @@
             <label class="form-label">User Groups</label>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="user_groups" value="READ_CARS" id="read_cars">
-                <label class="form-check-label" for="read_cars">
-                    READ_CARS
-                </label>
+                <label class="form-check-label" for="read_cars">READ_CARS</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="user_groups" value="WRITE_CARS" id="write_cars">
-                <label class="form-check-label" for="write_cars">
-                    WRITE_CARS
-                </label>
+                <label class="form-check-label" for="write_cars">WRITE_CARS</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="user_groups" value="READ_USERS" id="read_users">
-                <label class="form-check-label" for="read_users">
-                    READ_USERS
-                </label>
+                <label class="form-check-label" for="read_users">READ_USERS</label>
             </div>
             <div class="form-check">
                 <input class="form-check-input" type="checkbox" name="user_groups" value="WRITE_USERS" id="write_users">
-                <label class="form-check-label" for="write_users">
-                    WRITE_USERS
-                </label>
+                <label class="form-check-label" for="write_users">WRITE_USERS</label>
+            </div>
+            <div class="form-check">
+                <input class="form-check-input" type="checkbox" name="user_groups" value="INVOICING" id="invoicing">
+                <label class="form-check-label" for="invoicing">INVOICING</label>
             </div>
         </div>
 
         <button class="btn btn-primary mt-3" type="submit">Save</button>
-
     </form>
 </t:pageTamplate>
