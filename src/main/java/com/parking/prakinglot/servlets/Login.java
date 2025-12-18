@@ -25,6 +25,7 @@ public class Login extends HttpServlet {
             throws ServletException, IOException {
         // NU trebuie să faci nimic aici când folosești FORM authentication
         // GlassFish se ocupă de tot prin j_security_check
+        request.setAttribute("message", "Username or password incorrect");
         doGet(request, response);
     }
 }

@@ -1,6 +1,8 @@
 package com.parking.prakinglot.entities;
 
 import jakarta.persistence.*;
+import jakarta.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 
 @Entity
@@ -11,25 +13,47 @@ public class Car {
     @Column(name = "id", nullable = false)
     private Long id;
 
-    @Column(name = "parking_spot")
+    @NotBlank(message = "Parking spot is required")
+    @Size(min = 1, max = 100, message = "Parking spot must be between 1 and 100 characters")
+    @Column(name = "parking_spot", length = 100)
     private String parkingSpot;
 
-    @Column(name = "license_plate")
+    @NotBlank(message = "License plate is required")
+    @Size(min = 2, max = 100, message = "License plate must be between 2 and 100 characters")
+    @Column(name = "license_plate", length = 100)
     private String licensePlate;
 
+    @NotNull(message = "Owner is required")
     @ManyToOne(optional = false)
     @JoinColumn(name = "owner_id", nullable = false)
     private User owner;
 
-    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch=FetchType.LAZY)
+    @OneToOne(mappedBy = "car", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private CarPhoto photo;
 
-    public CarPhoto getPhoto() {
-        return photo;
+    // Getters și setters
+    public Long getId() {
+        return id;
     }
 
-    public void setPhoto(CarPhoto photo) {
-        this.photo = photo;
+    public void setId(Long id) {
+        this.id = id;
+    }
+
+    public String getParkingSpot() {
+        return parkingSpot;
+    }
+
+    public void setParkingSpot(String parkingSpot) {
+        this.parkingSpot = parkingSpot;
+    }
+
+    public String getLicensePlate() {
+        return licensePlate;
+    }
+
+    public void setLicensePlate(String licensePlate) {
+        this.licensePlate = licensePlate;
     }
 
     public User getOwner() {
@@ -40,31 +64,11 @@ public class Car {
         this.owner = owner;
     }
 
-    @Size(min=2,max=100)
-    @Column(unique=true,nullable=false ,length=100)
-    public String getParkingSpot() {
-        return parkingSpot;
+    public CarPhoto getPhoto() {
+        return photo;
     }
 
-    public void setParkingSpot(String parkingSpot) {
-        this.parkingSpot = parkingSpot;
-    }
-
-    @Size(min=2,max=100)
-    @Column(unique=true,nullable=false ,length=100)
-    public String getLicensePlate() {
-        return licensePlate;
-    }
-
-    public void setLicensePlate(String licensePlate) {
-        this.licensePlate = licensePlate;
-    }
-
-    public Long getId() {
-        return id;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
+    public void setPhoto(CarPhoto photo) {
+        this.photo = photo;
     }
 }

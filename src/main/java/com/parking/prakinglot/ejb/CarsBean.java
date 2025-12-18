@@ -41,10 +41,13 @@ public class CarsBean {
         car.setParkingSpot(parkingSpot);
 
         User user = entityManager.find(User.class, userId);
-        user.getCars().add(car);
+        if (user == null) {
+            throw new IllegalArgumentException("User not found");
+        }
+        // DOAR setează owner-ul, NU modifica lista de cars a user-ului
         car.setOwner(user);
-
         entityManager.persist(car);
+        // JPA va actualiza automat user.cars datorită relației bidirectionale
     }
     private List<CarDto> copyCarsToDto(List<Car> cars) {
         List<CarDto> carDtos = new ArrayList<>();
